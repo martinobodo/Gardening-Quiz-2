@@ -46,3 +46,21 @@ h1 {
     button:hover {
        background-color: #8f8d8d;
  }
+/*Styles for Option button */
+
+ .option-button {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.option-button.correct {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.option-button.wrong {
+    background-color: #f44336; /* Red */
+    color: white;
+}
