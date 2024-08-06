@@ -1,4 +1,4 @@
-/* Questions for quiz */
+// Questions for quiz
 const quizData = [
     {
         question: "What is a spade used for?",
@@ -14,6 +14,8 @@ const quizData = [
 
 const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("options");
+const usernameForm = document.getElementById("username-form");
+const quizContainer = document.getElementById("quiz");
 
 let currentQuestion = 0;
 let score = 0;
@@ -64,7 +66,6 @@ function selectAnswer(e) {
 }
 
 function showResult() {
-    const quizContainer = document.getElementById("quiz");
     quizContainer.innerHTML = `
         <h1>Quiz Completed!</h1>
         <p>Your score: ${score}/${quizData.length}</p>
@@ -78,4 +79,15 @@ function restartQuiz() {
     showQuestion();
 }
 
-showQuestion();
+// Event listener for the form submission
+document.getElementById('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting the traditional way
+    const username = document.getElementById('username').value;
+    if (username) {
+        usernameForm.style.display = 'none';
+        quizContainer.style.display = 'block';
+        showQuestion();
+    } else {
+        alert('Please enter your name');
+    }
+});
