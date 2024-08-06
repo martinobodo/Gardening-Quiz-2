@@ -14,7 +14,6 @@ const quizData = [
 
 const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("options");
-const submitButton = document.getElementById("submit");
 
 let currentQuestion = 0;
 let score = 0;
@@ -22,8 +21,8 @@ let score = 0;
 function showQuestion() {
     const question = quizData[currentQuestion];
     questionElement.innerText = question.question;
- /* Clear previous options */
-    optionsElement.innerHTML = ""; 
+
+    optionsElement.innerHTML = ""; // Clear previous options
     question.options.forEach(option => {
         const button = document.createElement("button");
         button.innerText = option;
@@ -37,16 +36,14 @@ function selectAnswer(e) {
     const selectedButton = e.target;
     const answer = quizData[currentQuestion].answer;
     
-    /* Disable buttons after selection */
+    // Disable buttons after selection
     Array.from(optionsElement.children).forEach(button => {
         button.disabled = true;
         if (button.innerText === answer) {
-            button.classList.add("correct"); /* Highlight the correct answer */
-             
+            button.classList.add("correct"); // Highlight the correct answer
         }
         if (button === selectedButton && button.innerText !== answer) {
-            button.classList.add("wrong"); /* Highlight the wrong answer */
-            
+            button.classList.add("wrong"); // Highlight the wrong answer
         }
     });
 
@@ -56,8 +53,7 @@ function selectAnswer(e) {
 
     currentQuestion++;
 
-    
-    /* Wait a moment before showing the next question*/
+    // Wait a moment before showing the next question
     setTimeout(() => {
         if (currentQuestion < quizData.length) {
             showQuestion();
