@@ -84,6 +84,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the form from submitting the traditional way
     const username = document.getElementById('username').value;
     if (username) {
+        console.log(username)
         usernameForm.style.display = 'none';
         quizContainer.style.display = 'block';
         showQuestion();
